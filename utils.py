@@ -1,5 +1,6 @@
 
 import re
+import ast
 
 stop_words = ["a", "actualmente", "adelante", "además", "afirmó", "agregó", "ahora", "ahí", "al", "algo", "alguna", "algunas", "alguno", "algunos", "algún", "alrededor", "ambos",
 "ampleamos", "ante", "anterior", "antes", "apenas", "aproximadamente", "aquel", "aquellas", "aquellos", "aqui", "aquí", "arriba", "aseguró", "así", "atras", "aunque", "ayer",
@@ -47,3 +48,7 @@ def get_stop_words():
 
 def get_emoji_pattern(): 
         return emoji_pattern
+
+def extract_mentioned_users(tweet):
+    mentioned_users = ast.literal_eval(tweet)
+    return [user['username'] for user in mentioned_users]
